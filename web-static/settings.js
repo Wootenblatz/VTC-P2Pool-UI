@@ -1,4 +1,5 @@
 const SiteSettings = {
+  locale: "en-US",
   siteName: "Wootenblatz's VTC P2Pool",
   blockUrl: "https://www.coinexplorer.net/VTC/block/",
   tranactionUrl: "https://www.coinexplorer.net/VTC/transaction/",

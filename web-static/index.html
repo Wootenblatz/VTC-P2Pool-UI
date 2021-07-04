@@ -190,9 +190,7 @@
               .attr("class", "card-text text-muted")
               .html(function (block) {
                 var d = new Date(1000 * block.ts);
-                var tParts = [d.getHours().toString(), d.getMinutes().toString(), d.getSeconds().toString(), d.getMilliseconds().toString()];
-                var timeText = tParts.join(":");
-                return d.toLocaleDateString() + " @ " + timeText;
+                return d.toLocaleDateString(SiteSettings.locale);
               })
               .append("a")
                 .text("View share")
