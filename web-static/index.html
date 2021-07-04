@@ -190,8 +190,9 @@
               .attr("class", "card-text text-muted")
               .html(function (block) {
                 var d = new Date(1000 * block.ts);
-                return d.toLocaleDateString(SiteSettings.locale);
+                return d.toLocaleDateString(SiteSettings.locale) + " " + d.toLocaleTimeString(SiteSettings.locale);
               })
+              .append("br")
               .append("a")
                 .text("View share")
                 .attr("href", function(block) { return "share.html#" + block.share; })
