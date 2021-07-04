@@ -190,12 +190,12 @@
               .attr("class", "card-text text-muted")
               .html(function (block) {
                 var d = new Date(1000 * block.ts);
-                return d.toLocaleDateString(SiteSettings.locale) + " " + d.toLocaleTimeString(SiteSettings.locale);
+                return d.toLocaleDateString(SiteSettings.locale) + " " + d.toLocaleTimeString(SiteSettings.locale) + " &mdash; ";
               })
-              .append("br")
               .append("a")
                 .text("View share")
                 .attr("href", function(block) { return "share.html#" + block.share; })
+                .attr("class", "text-muted")
                 .attr("target", "_blank");
           tr.append("p")
               .attr("class", "card-text")
@@ -455,7 +455,7 @@
 
             <h3 class="display text-danger">Shared Pool Blocks</h3>
             <small class="text-muted">For last 24 hours</small>
-            <div class="row row-cols-1 row-cols-md-2" id="blocks">
+            <div class="row row-cols-1 row-cols-md-5" id="blocks">
             </div>
 
             <h2>Payouts if a block were found NOW:</h2>
