@@ -191,7 +191,8 @@
               .html(function (block) {
                 var d = new Date(1000 * block.ts);
                 var tParts = [d.getHours.toString, d.getMinutes.toString, d.getSeconds.toString, d.getMilliseconds.toString];
-                return d.toLocaleDateString() + " @ " + tParts.join(":");
+                var timeText = tParts.join(":");
+                return d.toLocaleDateString() + " @ " + timeText;
               })
               .append("a")
                 .text("View share")
@@ -201,7 +202,7 @@
               .attr("class", "card-text")
               .append("a")
                 .text(function (block){ 
-                  return block.hash.substr(0, 8) + " ... " + block.hash.substr(block.hash.length - 10, block.hash.length);
+                  return "Look up hash: " + block.hash.substr(0, 8) + " ... " + block.hash.substr(block.hash.length - 10, block.hash.length);
                 })
                 .attr("href", function(block) { 
                   return SiteSettings.blockUrl + block.hash;
