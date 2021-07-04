@@ -55,7 +55,6 @@
         var local_dead = d3.sum(values(local_stats.miner_dead_hash_rates));
         d3.select("#local_rate").text(d3.format(".3s")(local) + "H/s");
         d3.select("#local_doa").text(d3.format(".2p")(local_dead / local));
-
         d3.select("#shares_total").text(local_stats.shares.total);
         d3.select("#shares_orphan").text(local_stats.shares.orphan);
         d3.select("#shares_dead").text(local_stats.shares.dead);
@@ -181,6 +180,7 @@
             .attr("class", "card-title text-succes")
             .append("a")
               .html(function (block) { 
+
                 return currency_info.symbol + " block #" + block.number + ' <i class="fa fa-external-link-square" aria-hidden="true"></i>';
               })
               .attr("href", function(block){
@@ -202,12 +202,12 @@
               .attr("class", "card-text")
               .append("a")
                 .text(function (block){ 
-                  return "Look up hash: " + block.hash.substr(0, 8) + " ... " + block.hash.substr(block.hash.length - 10, block.hash.length);
+                  return block.hash.substr(0, 8) + " ... " + block.hash.substr(block.hash.length - 10, block.hash.length);
                 })
                 .attr("href", function(block) { 
                   return SiteSettings.blockUrl + block.hash;
                 })
-                .atrr("class", "text-info")
+                .attr("class", "text-info")
                 .attr("target", "_blank");
                 
           // tr.append("td").text(function (block) {
@@ -416,7 +416,7 @@
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">
-                            Expected after mining for 24 hours: <span id="expected_payout_amount"></span> <span class="symbol"></span> per block.
+                            Reward per block: <span id="expected_payout_amount"></span> <span class="symbol"></span> <span class='text-muted'>after 24 hours</span>
                         </small>
                     </div>
                 </div>
