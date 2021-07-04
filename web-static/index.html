@@ -170,31 +170,63 @@
 
         d3.json("../recent_blocks", function (blocks) {
           var tr = d3
-            .select("#blocks")
+            .select("#blocks > div.col.mb-4")
             .selectAll()
             .data(blocks)
             .enter()
-            .append("tr");
-          tr.append("td").text(function (block) {
-            return new Date(1000 * block.ts).toLocaleDateString();
-          });
-          tr.append("td").text(function (block) {
-            return block.number;
-          });
-          tr.append("td")
+            .append("div").attr("class", "card bg-light")
+            .append("div").attr("class", "card-body");
+          tr.append("h5")
+            .attr("class", "card-title text-succes")
             .append("a")
-            .text(function (block) {
-              return block.hash;
-            })
-            .attr("href", function (block) {
-              return SiteSettings.blockUrl + block.hash;
-            }).attr("target", "_blank");
-          tr.append("td")
-            .append("a")
-            .text("→")
-            .attr("href", function (block) {
-              return "share.html#" + block.share;
-            }).attr("target", "_blank");
+              .html(function (block) { 
+                return block.number + ' <i class="fa fa-external-link-square" aria-hidden="true"></i>';
+              })
+              .attr("href", function(block){
+                return SiteSettings.blockUrl + block.number;
+              });
+          tr.append("p")
+              .attr("class", "card-text")
+              .append("a")
+                .text(function (block){ 
+                  return block.hash.substr(0, 4) + " ... " + block.hash.substr(block.hash.length - 4, block.hash.length);
+                })
+                .attr("href", function(block) { 
+                  return SiteSettings.blockUrl + block.hash;
+                })
+                .attr("target", "_blank");
+          tr.append("p")
+              .attr("class", "card-text text-muted")
+              .html(function (block) {
+                var d = new Date(1000 * block.ts);
+                var tParts = [d.getHours, d.getMinutes, d.getSeconds];
+                return d.toLocaleDateString() + " @ " + tParts.join(":");
+              })
+              .append("a")
+                .text("View share")
+                .attr("href", function(block) { return "share.html#" + block.share; })
+                .attr("target", "_blank");
+                
+          // tr.append("td").text(function (block) {
+          //   return new Date(1000 * block.ts).toLocaleDateString();
+          // });
+          // tr.append("td").text(function (block) {
+          //   return block.number;
+          // });
+          // tr.append("td")
+          //   .append("a")
+          //   .text(function (block) {
+          //     return block.hash;
+          //   })
+          //   .attr("href", function (block) {
+          //     return SiteSettings.blockUrl + block.hash;
+          //   }).attr("target", "_blank");
+          // tr.append("td")
+          //   .append("a")
+          //   .text("→")
+          //   .attr("href", function (block) {
+          //     return "share.html#" + block.share;
+          //   }).attr("target", "_blank");
         });
       });
 
@@ -418,24 +450,14 @@
                     </div>
                 </div>
             </div>
+            <br>
 
-            <h2>Blocks found in last day:</h2>
-            <p>
-                Note that blocks may have been orphaned from the P2Pool chain and so not
-                be here.
-            </p>
-            <table class="table" id="blocks">
-              <thead>
-                <tr>
-                  <th scope="col">time</th>
-                  <th scope="col">number</th>
-                  <th scope="col">hash/explorer link</th>
-                  <th scope="col">share</th>
-                </tr>
-              </thead>
-              <tbody>
-              </tbody>
-            </table>
+            <h3 class="display text-danger">Shared Pool Blocks</h3>
+            <small class="text-muted">For last 24 hours</small>
+            <div class="row row-cols-1 row-cols-md-2" id="blocks">
+              <div class="col mb-4">
+              </div>
+            </div>
 
             <h2>Payouts if a block were found NOW:</h2>
             <table class="table" id="payouts">
