@@ -170,41 +170,42 @@
 
         d3.json("../recent_blocks", function (blocks) {
           var tr = d3
-            .select("#blocks > div.col.mb-4")
+            .select("#blocks")
             .selectAll()
             .data(blocks)
             .enter()
+            .append("div").attr("class", "col mb-4")
             .append("div").attr("class", "card bg-light")
             .append("div").attr("class", "card-body");
           tr.append("h5")
             .attr("class", "card-title text-succes")
             .append("a")
               .html(function (block) { 
-                return block.number + ' <i class="fa fa-external-link-square" aria-hidden="true"></i>';
+                return currency_info.symbol + " block #" + block.number + ' <i class="fa fa-external-link-square" aria-hidden="true"></i>';
               })
               .attr("href", function(block){
                 return SiteSettings.blockUrl + block.number;
               });
           tr.append("p")
-              .attr("class", "card-text")
-              .append("a")
-                .text(function (block){ 
-                  return block.hash.substr(0, 4) + " ... " + block.hash.substr(block.hash.length - 4, block.hash.length);
-                })
-                .attr("href", function(block) { 
-                  return SiteSettings.blockUrl + block.hash;
-                })
-                .attr("target", "_blank");
-          tr.append("p")
               .attr("class", "card-text text-muted")
               .html(function (block) {
                 var d = new Date(1000 * block.ts);
-                var tParts = [d.getHours, d.getMinutes, d.getSeconds];
+                var tParts = [d.getHours.toString, d.getMinutes.toString, d.getSeconds.toString, d.getMilliseconds.toString];
                 return d.toLocaleDateString() + " @ " + tParts.join(":");
               })
               .append("a")
                 .text("View share")
                 .attr("href", function(block) { return "share.html#" + block.share; })
+                .attr("target", "_blank");
+          tr.append("p")
+              .attr("class", "card-text")
+              .append("a")
+                .text(function (block){ 
+                  return block.hash.substr(0, 8) + " ... " + block.hash.substr(block.hash.length - 10, block.hash.length);
+                })
+                .attr("href", function(block) { 
+                  return SiteSettings.blockUrl + block.hash;
+                })
                 .attr("target", "_blank");
                 
           // tr.append("td").text(function (block) {
@@ -455,8 +456,6 @@
             <h3 class="display text-danger">Shared Pool Blocks</h3>
             <small class="text-muted">For last 24 hours</small>
             <div class="row row-cols-1 row-cols-md-2" id="blocks">
-              <div class="col mb-4">
-              </div>
             </div>
 
             <h2>Payouts if a block were found NOW:</h2>
