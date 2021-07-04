@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
+    <!-- ***************************************** -->
+    <!-- To configure settings, edit "settings.js" -->
+    <!-- ***************************************** -->
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <title>P2Pool</title>
     <meta
@@ -9,12 +13,11 @@
     />
 
     <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="bootstrap.min.css"
-    />
-
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="settings.css" />
+    
     <script type="text/javascript" src="d3.v2.min.js"></script>
     <script type="text/javascript">
       // based on goblin's p2pool-stats project
@@ -116,7 +119,8 @@
           d3.json("../payout_addr", function (addr) {
             d3.select("#payout_addr")
               .text(addr)
-              .attr("href", currency_info.address_explorer_url_prefix + addr);
+              .attr("href", SiteSettings.addressUrl + addr)
+              .attr("target", "_blank");
             d3.select("#payout_amount").text(addr in pays ? pays[addr] : 0);
           });
           d3.json("../payout_addrs", function (addrs) {
@@ -145,8 +149,9 @@
             .text(function (addr) {
               return addr;
             })
+            .attr("target", "_blank")
             .attr("href", function (addr) {
-              return currency_info.address_explorer_url_prefix + addr;
+              return SiteSettings.addressUrl + addr;
             });
           tr.append("td").text(function (addr) {
             return pays[addr];
@@ -182,21 +187,21 @@
               return block.hash;
             })
             .attr("href", function (block) {
-              return currency_info.block_explorer_url_prefix + block.hash;
-            });
+              return SiteSettings.blockUrl + block.hash;
+            }).attr("target", "_blank");
           tr.append("td")
             .append("a")
             .text("→")
             .attr("href", function (block) {
               return "share.html#" + block.share;
-            });
+            }).attr("target", "_blank");
         });
       });
 
       d3.json("../web/best_share_hash", function (c) {
         d3.select("#best_share")
           .append("a")
-          .attr("href", "share.html#" + c)
+          .attr("href", "share.html#" + c).attr("target", "_blank")
           .text(c.substr(-8));
       });
 
@@ -213,7 +218,7 @@
             .append("a")
             .attr("href", function (c) {
               return "share.html#" + c;
-            })
+            }).attr("target", "_blank")
             .text(function (c) {
               return c.substr(-8);
             });
@@ -226,14 +231,92 @@
       fill("../web/my_share_hashes", "#my_share_hashes");
     </script>
   </head>
-  <body>
+  <body class="bg-dark">
+    <div class="container-fluid bg-dark">
+      <h1 class="text-white" id="SettingsSiteName">VTC P2Pool</h1>
+    </div>
+    <br>
     <div class="container-fluid">
+        <div id="warnings"></div>
         <div class="row">
-        <div class="col-2">
+        <div class="col-md-2 col-xs-12 bg-dark d-none d-lg-block" id="site-sidebar">
+          <h4 class="text-primary">Learn</h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <a class="link" target="_blank" href="http://p2pool.org/learn/">
+                <i class="fa fa-link u-mr-xsmall"></i>What is P2Pool?
+              </a>
+            </li>
+            <li class="list-group-item">
+              <a class="link" target="_blank" href="https://en.bitcoin.it/wiki/P2Pool#Frequently_Asked_Questions">
+                <i class="fa fa-link u-mr-xsmall"></i>FAQ
+              </a>
+            </li>
+          </ul>
+
+          <h4 class="text-primary">Miners</h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <a class="link" target="_blank" href="https://github.com/vertcoin-project/one-click-miner-vnext/releases">
+                <i class="fa fa-download u-mr-xsmall"></i>One-Click Miner
+              </a>
+            </li>
+            <li class="list-group-item">
+              <a class="link" target="_blank" href="https://github.com/CryptoGraphics/VerthashMiner/releases">
+                <i class="fa fa-download u-mr-xsmall"></i>Verthash Miner
+              </a>
+            </li>
+            <li class="list-group-item">
+              <a class="link" target="_blank" href="https://github.com/sp-hash/SPMiner/">
+                <i class="fa fa-download u-mr-xsmall"></i>SPMiner
+              </a>
+            </li>
+          </ul>
+
+          <h4 class="text-primary">Wallets</h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <a class="link" target="_blank" href="https://github.com/vertcoin/vertcoin/releases">
+                <i class="fa fa-check u-mr-xsmall"></i>Vertcoin Core Wallet
+              </a>
+            </li>
+            <li class="list-group-item">
+              <a class="link" target="_blank" href="https://shop.ledger.com/products/ledger-nano-s">
+                <i class="fa fa-usb u-mr-xsmall"></i>Ledger Nano S (Hardware)
+              </a>
+            </li>
+            <li class="list-group-item">
+              <a class="link" target="_blank" href="https://shop.ledger.com/products/ledger-nano-x">
+                <i class="fa fa-bluetooth u-mr-xsmall"></i>Ledger Nano X (Hardware)
+              </a>
+            </li>
+          </ul>
+
+          <h4 class="text-primary">Links</h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <a class="link" target="_blank" href="https://www.reddit.com/r/vertcoin/">
+                <i class="fa fa-reddit-alien u-mr-xsmall"></i>Reddit
+              </a>
+            </li>
+            <li class="list-group-item">
+              <a class="link" target="_blank" href="https://twitter.com/Vertcoin">
+                <i class="fa fa-twitter u-mr-xsmall"></i>Twitter
+              </a>
+            </li>
+            <li class="list-group-item">
+              <a class="link" target="_blank" href="https://discord.gg/mXw9zpw">
+                <i class="fa fa-comments u-mr-xsmall"></i>Discord
+              </a>
+            </li>
+            <li class="list-group-item">
+              <a class="link" target="_blank" href="https://vertcoin.org">
+                <i class="fa fa-check u-mr-xsmall"></i>Vertcoin.org
+              </a>
+            </li>
+          </ul>
         </div>
-        <div class="col">
-            <h1 class="text-primary">Wootenblatz's VTC P2Pool</h1>
-            <p><a href="graphs.html">Graphs</a></p>
+        <div class="col ">
             <div class="card-deck">
                 <div class="card text-white bg-success">
                     <div class="card-body">
@@ -257,6 +340,7 @@
                                 <span id="local_rate"></span>
                             </h2>
                             (<span id="local_doa" ></span> DOA)<br>
+                            <p><a href="graphs.html">Graphs</a></p>
                         </p>
                     </div>
                     <div class="card-footer">
@@ -327,27 +411,30 @@
                     </div>
                 </div>
             </div>
-            <div id="warnings"></div>
 
             <h2>Blocks found in last day:</h2>
             <p>
                 Note that blocks may have been orphaned from the P2Pool chain and so not
                 be here.
             </p>
-            <table border="1" id="blocks">
+            <table class="table" id="blocks">
+              <thead>
                 <tr>
-                <th>time</th>
-                <th>number</th>
-                <th>hash/explorer link</th>
-                <th>share</th>
+                  <th scope="col">time</th>
+                  <th scope="col">number</th>
+                  <th scope="col">hash/explorer link</th>
+                  <th scope="col">share</th>
                 </tr>
+              </thead>
+              <tbody>
+              </tbody>
             </table>
 
             <h2>Payouts if a block were found NOW:</h2>
-            <table border="1" id="payouts">
+            <table class="table" id="payouts">
                 <tr>
-                <th>address</th>
-                <th>amount in <span class="symbol"></span></th>
+                <th scope="col">address</th>
+                <th scope="col">amount in <span class="symbol"></span></th>
                 </tr>
             </table>
 
@@ -383,12 +470,6 @@
 
     </div>
 
-    <style>
-        #my_share_hashes > span {
-            width: 100%;
-            display: block;
-        }
-    </style>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -404,5 +485,6 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <script src="settings.js"></script>
   </body>
 </html>
