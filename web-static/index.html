@@ -144,9 +144,10 @@
             .enter()
           tr.append("li")
             .attr("class", "list-group-item d-flex justify-content-between align-items-center")
+            .append("small")
             .append("a")
             .html(function (addr) {
-              return addr.substr(0,8) + " &hellip; " + addr.substr(addr.length - 8, addr.length);
+              return addr.substr(0,4) + " &hellip; " + addr.substr(addr.length - 4, addr.length);
             })
             .attr("target", "_blank")
             .attr("href", function (addr) {
@@ -429,15 +430,11 @@
 
       </div>
       <div class="col-md-2 col-xs-12">
-        <h3 class="display text-danger">
-          Pool Payout Estimates
-        </h3>
-        <ul class="list-group" id="payouts">
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Cras justo odio
-            <span class="badge badge-primary badge-pill">14</span>
-          </li>
-        </ul>
+        <h3 class="display text-danger">Pool Payout Estimates</h3>
+        <div id="payouts-container">
+          <ul class="list-group" id="payouts">
+          </ul>
+        </div>
         <br>
 
         <h3 class="text-danger">Share explorer</h3>

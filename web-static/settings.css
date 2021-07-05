@@ -8,5 +8,9 @@
 
 #shares-container, #payout-container {
   display: block;
+  height: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
   max-height: 400px;
+  min-height: 100px;
 }
