@@ -21,3 +21,11 @@ ul#payouts > li {
 #blocks > div > div > div > p.card-text.text-muted {
   font-size: smaller;
 }
+
+.card > h2.text-primary {
+  text-shadow: 1px 1px 1px #999;
+}
+
+#middle-column {
+  background-color: #002b36;
+}

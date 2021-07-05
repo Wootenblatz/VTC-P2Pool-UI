@@ -155,7 +155,7 @@
             .attr("data-toggle", "tooltip")
             .attr("data-placement", "left")
             .attr("title", function(addr) {
-              return pays[addr] + "VTC to " + addr;
+              return pays[addr] + currency_info.symbol + " to " + addr;
             });
         });
 
@@ -329,7 +329,7 @@
 
         </ul>
       </div>
-      <div class="col-md-8 col-xs-12">
+      <div class="col-md-8 col-xs-12 pt-4 rounded" id="middle-column">
           <div class="card-deck">
               <div class="card text-white bg-success">
                   <div class="card-body">
