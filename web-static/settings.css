@@ -21,8 +21,7 @@ ul#payouts > li {
 #blocks > div > div > div > p.card-text.text-muted {
   font-size: smaller;
 }
-
-.card > h2.text-primary {
+#middle-column > div > div.card.text-white.bg-success > div.card-body > h2 {
   text-shadow: 1px 1px 1px #999;
 }
 
