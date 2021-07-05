@@ -150,12 +150,14 @@
               '<span class="badge badge-primary badge-pill">' + pays[addr] + '</span> ' +
               addr.substr(0,4) + " &hellip; " + addr.substr(addr.length - 4, addr.length);
             })
-            .attr("data-toggle", "tooltip")
-            .attr("data-placement", "left")
-            .attr("title", addr)
             .attr("target", "_blank")
             .attr("href", function (addr) {
               return SiteSettings.addressUrl + addr;
+            })
+            .attr("data-toggle", "tooltip")
+            .attr("data-placement", "left")
+            .attr("title", function(addr) {
+              return addr;
             });
         });
 
