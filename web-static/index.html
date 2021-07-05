@@ -146,9 +146,7 @@
             .attr("class", "list-group-item d-flex justify-content-between align-items-center")
             .append("a")
             .html(function (addr) {
-              return 
-              '<span class="badge badge-primary badge-pill">' + pays[addr] + '</span> ' +
-              addr.substr(0,4) + " &hellip; " + addr.substr(addr.length - 4, addr.length);
+              return '<span class="badge badge-primary badge-pill">' + pays[addr] + '</span> ' + addr.substr(0,4) + " &hellip; " + addr.substr(addr.length - 4, addr.length);
             })
             .attr("target", "_blank")
             .attr("href", function (addr) {
