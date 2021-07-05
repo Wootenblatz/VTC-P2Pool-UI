@@ -432,46 +432,43 @@
 
       </div>
       <div class="col-md-2 col-xs-12">
-        <div class="h-50">
-          <h3 class="display text-danger">
-            Pool Payout Estimates
-          </h3>
-          <ul class="list-group" id="payouts">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Cras justo odio
-              <span class="badge badge-primary badge-pill">14</span>
-            </li>
-          </ul>
+        <h3 class="display text-danger">
+          Pool Payout Estimates
+        </h3>
+        <ul class="list-group" id="payouts">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Cras justo odio
+            <span class="badge badge-primary badge-pill">14</span>
+          </li>
+        </ul>
+      </div>
+      <br>
+
+        <h3 class="text-danger">Share explorer</h2>
+        <p>Best share: <span id="best_share"></span></p>
+        <p>Verified heads: <span id="verified_heads"></span></p>
+        <p>Heads: <span id="heads"></span></p>
+        <p>Verified tails: <span id="verified_tails"></span></p>
+        <p>Tails: <span id="tails"></span></p>
+
+        <div class="accordion" id="shareAccordian">
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        My Shares
+                    </button>
+                </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#shareAccordian">
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush" id="my_share_hashes">
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
         <br>
-
-        <div class="h-50">
-          <h3 class="text-danger">Share explorer</h2>
-          <p>Best share: <span id="best_share"></span></p>
-          <p>Verified heads: <span id="verified_heads"></span></p>
-          <p>Heads: <span id="heads"></span></p>
-          <p>Verified tails: <span id="verified_tails"></span></p>
-          <p>Tails: <span id="tails"></span></p>
-
-          <div class="accordion" id="shareAccordian">
-              <div class="card">
-                  <div class="card-header" id="headingTwo">
-                  <h2 class="mb-0">
-                      <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                          My Shares
-                      </button>
-                  </h2>
-                  </div>
-                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#shareAccordian">
-                      <div class="card-body">
-                          <ul class="list-group list-group-flush" id="my_share_hashes">
-                          </ul>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <br>
-        </div>
       </div>
     </div>
 
