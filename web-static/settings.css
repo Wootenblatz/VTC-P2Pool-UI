@@ -14,3 +14,7 @@
   max-height: 400px;
   min-height: 100px;
 }
+
+ul#payouts > li {
+  font-size: smaller;
+}

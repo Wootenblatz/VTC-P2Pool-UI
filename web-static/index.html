@@ -144,15 +144,18 @@
             .enter()
           tr.append("li")
             .attr("class", "list-group-item d-flex justify-content-between align-items-center")
-            .append("small")
-            .append("a")
+            .append("span").attr("class", "badge badge-primary badge-pill").text(pays[addr])
+            .after("a")
             .html(function (addr) {
               return addr.substr(0,4) + " &hellip; " + addr.substr(addr.length - 4, addr.length);
             })
+            .attr("data-toggle", "tooltip")
+            .attr("data-placement", "left")
+            .attr("title", addr)
             .attr("target", "_blank")
             .attr("href", function (addr) {
               return SiteSettings.addressUrl + addr;
-            }).append("span").attr("class", "badge badge-primary badge-pill").text(pays[addr]);
+            });
         });
 
         d3.json("../recent_blocks", function (blocks) {
@@ -430,7 +433,7 @@
 
       </div>
       <div class="col-md-2 col-xs-12">
-        <h3 class="display text-danger">Pool Payout Estimates</h3>
+        <h3 class="display text-danger">Payout Estimates</h3>
         <div id="payout-container">
           <ul class="list-group" id="payouts">
           </ul>
