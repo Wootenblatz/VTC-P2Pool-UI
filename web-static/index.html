@@ -145,7 +145,7 @@
           tr.append("li")
             .attr("class", "list-group-item d-flex justify-content-between align-items-center")
             .append("a")
-            .text(function (addr) {
+            .html(function (addr) {
               return addr.substr(0,8) + " &hellip; " + addr.substr(addr.length - 8, addr.length);
             })
             .attr("target", "_blank")
@@ -199,27 +199,6 @@
                 })
                 .attr("class", "text-info")
                 .attr("target", "_blank");
-                
-          // tr.append("td").text(function (block) {
-          //   return new Date(1000 * block.ts).toLocaleDateString();
-          // });
-          // tr.append("td").text(function (block) {
-          //   return block.number;
-          // });
-          // tr.append("td")
-          //   .append("a")
-          //   .text(function (block) {
-          //     return block.hash;
-          //   })
-          //   .attr("href", function (block) {
-          //     return SiteSettings.blockUrl + block.hash;
-          //   }).attr("target", "_blank");
-          // tr.append("td")
-          //   .append("a")
-          //   .text("→")
-          //   .attr("href", function (block) {
-          //     return "share.html#" + block.share;
-          //   }).attr("target", "_blank");
         });
       });
 
@@ -262,236 +241,241 @@
     </div>
     <br>
     <div class="container-fluid">
-        <div id="warnings"></div>
-        <div class="row">
-        <div class="col-md-2 col-xs-12 bg-dark d-none d-lg-block" id="site-sidebar">
-          <h4 class="text-primary">Learn</h4>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <a class="link" target="_blank" href="http://p2pool.org/learn/">
-                <i class="fa fa-link "></i>What is P2Pool?
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a class="link" target="_blank" href="https://en.bitcoin.it/wiki/P2Pool#Frequently_Asked_Questions">
-                <i class="fa fa-link "></i>FAQ
-              </a>
-            </li>
-          </ul>
+      <div id="warnings"></div>
+      <div class="row">
+      <div class="col-md-2 col-xs-12 bg-dark d-none d-lg-block" id="site-sidebar">
+        <h4 class="text-primary">Learn</h4>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <a class="link" target="_blank" href="http://p2pool.org/learn/">
+              <i class="fa fa-link "></i>What is P2Pool?
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a class="link" target="_blank" href="https://en.bitcoin.it/wiki/P2Pool#Frequently_Asked_Questions">
+              <i class="fa fa-link "></i>FAQ
+            </a>
+          </li>
+        </ul>
 
-          <h4 class="text-primary">Miners</h4>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <a class="link" target="_blank" href="https://github.com/vertcoin-project/one-click-miner-vnext/releases">
-                <i class="fa fa-download "></i>One-Click Miner
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a class="link" target="_blank" href="https://github.com/CryptoGraphics/VerthashMiner/releases">
-                <i class="fa fa-download "></i>Verthash Miner
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a class="link" target="_blank" href="https://github.com/sp-hash/SPMiner/">
-                <i class="fa fa-download "></i>SPMiner
-              </a>
-            </li>
-          </ul>
+        <h4 class="text-primary">Miners</h4>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <a class="link" target="_blank" href="https://github.com/vertcoin-project/one-click-miner-vnext/releases">
+              <i class="fa fa-download "></i>One-Click Miner
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a class="link" target="_blank" href="https://github.com/CryptoGraphics/VerthashMiner/releases">
+              <i class="fa fa-download "></i>Verthash Miner
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a class="link" target="_blank" href="https://github.com/sp-hash/SPMiner/">
+              <i class="fa fa-download "></i>SPMiner
+            </a>
+          </li>
+        </ul>
 
-          <h4 class="text-primary">Wallets</h4>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <a class="link" target="_blank" href="https://github.com/vertcoin/vertcoin/releases">
-                <i class="fa fa-check "></i>Vertcoin Core Wallet
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a class="link" target="_blank" href="https://shop.ledger.com/products/ledger-nano-s">
-                <i class="fa fa-usb "></i>Ledger Nano S
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a class="link" target="_blank" href="https://shop.ledger.com/products/ledger-nano-x">
-                <i class="fa fa-bluetooth "></i>Ledger Nano X
-              </a>
-            </li>
-          </ul>
+        <h4 class="text-primary">Wallets</h4>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <a class="link" target="_blank" href="https://github.com/vertcoin/vertcoin/releases">
+              <i class="fa fa-check "></i>Vertcoin Core Wallet
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a class="link" target="_blank" href="https://shop.ledger.com/products/ledger-nano-s">
+              <i class="fa fa-usb "></i>Ledger Nano S
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a class="link" target="_blank" href="https://shop.ledger.com/products/ledger-nano-x">
+              <i class="fa fa-bluetooth "></i>Ledger Nano X
+            </a>
+          </li>
+        </ul>
 
-          <h4 class="text-primary">Links</h4>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <a class="link" target="_blank" href="https://www.reddit.com/r/vertcoin/">
-                <i class="fa fa-reddit-alien "></i>Reddit
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a class="link" target="_blank" href="https://twitter.com/Vertcoin">
-                <i class="fa fa-twitter "></i>Twitter
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a class="link" target="_blank" href="https://discord.gg/mXw9zpw">
-                <i class="fa fa-comments "></i>Discord
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a class="link" target="_blank" href="https://vertcoin.org">
-                <i class="fa fa-check "></i>Vertcoin.org
-              </a>
-            </li>
+        <h4 class="text-primary">Links</h4>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <a class="link" target="_blank" href="https://www.reddit.com/r/vertcoin/">
+              <i class="fa fa-reddit-alien "></i>Reddit
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a class="link" target="_blank" href="https://twitter.com/Vertcoin">
+              <i class="fa fa-twitter "></i>Twitter
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a class="link" target="_blank" href="https://discord.gg/mXw9zpw">
+              <i class="fa fa-comments "></i>Discord
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a class="link" target="_blank" href="https://vertcoin.org">
+              <i class="fa fa-check "></i>Vertcoin.org
+            </a>
+          </li>
 
-            <li class="list-group-item">
-              <a class="link" target="_blank" href="https://github.com/Wootenblatz/VTC-P2Pool-UI">
-                <i class="fa fa-tachometer "></i>VTC-P2Pool-UI
-              </a>
-            </li>
+          <li class="list-group-item">
+            <a class="link" target="_blank" href="https://github.com/Wootenblatz/VTC-P2Pool-UI">
+              <i class="fa fa-tachometer "></i>VTC-P2Pool-UI
+            </a>
+          </li>
 
+        </ul>
+      </div>
+      <div class="col-md-8 col-xs-12">
+          <div class="card-deck">
+              <div class="card text-white bg-success">
+                  <div class="card-body">
+                  <h5 class="card-title">Pool Rate</h5>
+                  <p class="card-text">
+                      <h2 class='text-primary'>
+                          <span id="pool_rate"></span>
+                      </h2>
+                      (<span id="pool_stale" ></span> DOA+orphan)<br>
+                  </p>
+                  </div>
+                  <div class="card-footer">
+                      <small class="text-muted">Share difficulty: <span id="difficulty"></span></small>
+                  </div>
+              </div>
+              <div class="card text-white bg-danger">
+                  <div class="card-body">
+                      <h5 class="card-title">Local Rate</h5>
+                      <p class="card-text">
+                          <h2 class='text-muted'>
+                              <span id="local_rate"></span>
+                          </h2>
+                          (<span id="local_doa" ></span> DOA)<br>
+                          <p><a href="graphs.html">Graphs</a></p>
+                      </p>
+                  </div>
+                  <div class="card-footer">
+                      <small class="text-muted">Expected time to share: <span id="time_to_share"></span></small>
+                  </div>
+              </div>
+              <div class="card text-white bg-info">
+                  <div class="card-body">
+                      <h5 class="card-title">Shares</h5>
+                      <p class="card-text">
+                          <h2 class='text-primary'>
+                              <span id="shares_total"></span>
+                          </h2>
+                          (<span id="shares_orphan" ></span> orphaned, <span id="shares_dead"></span> dead) 
+                      </p>
+                  </div>
+                  <div class="card-footer">
+                      <small class="text-muted">Efficiency: <span id="efficiency"></span></small>
+                  </div>
+              </div>
+          </div>
+          <br>
+          <div class="card-deck">
+              <div class="card text-white bg-success">
+                  <div class="card-body">
+                  <h5 class="card-title">Payout Estimate</h5>
+                      <p class="card-text">
+                          <h2 class='text-primary'><span id="payout_totamount"></span><span class="symbol"></span></h2>
+                          <small><a id="payout_addrs"></a></small>
+                      </p>
+                  </div>
+                  <div class="card-footer">
+                      <small class="text-muted">
+                          Reward per block: <span id="expected_payout_amount"></span> <span class="symbol"></span> <span class='text-muted'>after 24 hours</span>
+                      </small>
+                  </div>
+              </div>
+              <div class="card text-white bg-danger">
+                  <div class="card-body">
+                      <h5 class="card-title">Block Value</h5>
+                      <p class="card-text">
+                          <h2 class='text-muted'>
+                              <span id="block_value"></span>
+                              <span class="symbol"></span>
+                          </h2>
+                      </p>
+                  </div>
+                  <div class="card-footer">
+                      <small class="text-muted">
+                          Expected time to block: <span id="time_to_block"></span>
+                      </small>
+                  </div>
+              </div>
+              <div class="card text-white bg-info">
+                  <div class="card-body">
+                      <h5 class="card-title">Node Info</h5>
+                      <p class="card-text">
+                          <h2 class='text-primary'>
+                              Up <span id="uptime"></span>
+                          </h2>
+                          Version: <span id="version"></span>
+                      </p>
+                  </div>
+                  <div class="card-footer">
+                      <small class="text-muted">
+                          Peers: <span id="peers_out"></span> out, <span id="peers_in"></span> in
+                      </small>
+                  </div>
+              </div>
+          </div>
+          <br>
+
+          <h3 class="display text-danger">Blocks Found</h3>
+          <small class="text-muted">For last 24 hours</small>
+          <div class="row row-cols-1 row-cols-md-4" id="blocks">
+          </div>
+          <br>
+
+      </div>
+      <div class="col-md-2 col-xs-12">
+        <div class="h-50">
+          <h3 class="display text-danger">
+            Pool Payout Estimates
+          </h3>
+          <ul class="list-group" id="payouts">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Cras justo odio
+              <span class="badge badge-primary badge-pill">14</span>
+            </li>
           </ul>
         </div>
-        <div class="col-md-8 col-xs-12">
-            <div class="card-deck">
-                <div class="card text-white bg-success">
-                    <div class="card-body">
-                    <h5 class="card-title">Pool Rate</h5>
-                    <p class="card-text">
-                        <h2 class='text-primary'>
-                            <span id="pool_rate"></span>
-                        </h2>
-                        (<span id="pool_stale" ></span> DOA+orphan)<br>
-                    </p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Share difficulty: <span id="difficulty"></span></small>
-                    </div>
-                </div>
-                <div class="card text-white bg-danger">
-                    <div class="card-body">
-                        <h5 class="card-title">Local Rate</h5>
-                        <p class="card-text">
-                            <h2 class='text-muted'>
-                                <span id="local_rate"></span>
-                            </h2>
-                            (<span id="local_doa" ></span> DOA)<br>
-                            <p><a href="graphs.html">Graphs</a></p>
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Expected time to share: <span id="time_to_share"></span></small>
-                    </div>
-                </div>
-                <div class="card text-white bg-info">
-                    <div class="card-body">
-                        <h5 class="card-title">Shares</h5>
-                        <p class="card-text">
-                            <h2 class='text-primary'>
-                                <span id="shares_total"></span>
-                            </h2>
-                            (<span id="shares_orphan" ></span> orphaned, <span id="shares_dead"></span> dead) 
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Efficiency: <span id="efficiency"></span></small>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="card-deck">
-                <div class="card text-white bg-success">
-                    <div class="card-body">
-                    <h5 class="card-title">Payout Estimate</h5>
-                        <p class="card-text">
-                            <h2 class='text-primary'><span id="payout_totamount"></span><span class="symbol"></span></h2>
-                            <small><a id="payout_addrs"></a></small>
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">
-                            Reward per block: <span id="expected_payout_amount"></span> <span class="symbol"></span> <span class='text-muted'>after 24 hours</span>
-                        </small>
-                    </div>
-                </div>
-                <div class="card text-white bg-danger">
-                    <div class="card-body">
-                        <h5 class="card-title">Block Value</h5>
-                        <p class="card-text">
-                            <h2 class='text-muted'>
-                                <span id="block_value"></span>
-                                <span class="symbol"></span>
-                            </h2>
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">
-                            Expected time to block: <span id="time_to_block"></span>
-                        </small>
-                    </div>
-                </div>
-                <div class="card text-white bg-info">
-                    <div class="card-body">
-                        <h5 class="card-title">Node Info</h5>
-                        <p class="card-text">
-                            <h2 class='text-primary'>
-                                Up <span id="uptime"></span>
-                            </h2>
-                            Version: <span id="version"></span>
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">
-                            Peers: <span id="peers_out"></span> out, <span id="peers_in"></span> in
-                        </small>
-                    </div>
-                </div>
-            </div>
-            <br>
+        <br>
 
-            <h3 class="display text-danger">Blocks Found</h3>
-            <small class="text-muted">For last 24 hours</small>
-            <div class="row row-cols-1 row-cols-md-4" id="blocks">
-            </div>
-            <br>
+        <div class="h-50">
+          <h3 class="text-danger">Share explorer</h2>
+          <p>Best share: <span id="best_share"></span></p>
+          <p>Verified heads: <span id="verified_heads"></span></p>
+          <p>Heads: <span id="heads"></span></p>
+          <p>Verified tails: <span id="verified_tails"></span></p>
+          <p>Tails: <span id="tails"></span></p>
 
-            <h3 class="display text-danger">
-              Pool Payout Estimates
-            </h3>
-            <ul class="list-group" id="payouts">
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                Cras justo odio
-                <span class="badge badge-primary badge-pill">14</span>
-              </li>
-            </ul>
-
+          <div class="accordion" id="shareAccordian">
+              <div class="card">
+                  <div class="card-header" id="headingTwo">
+                  <h2 class="mb-0">
+                      <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          My Shares
+                      </button>
+                  </h2>
+                  </div>
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#shareAccordian">
+                      <div class="card-body">
+                          <ul class="list-group list-group-flush" id="my_share_hashes">
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <br>
         </div>
-        <div class="col-md-2 col-xs-12">
-            <h2 class="text-primary">Share explorer</h2>
-            <p>Best share: <span id="best_share"></span></p>
-            <p>Verified heads: <span id="verified_heads"></span></p>
-            <p>Heads: <span id="heads"></span></p>
-            <p>Verified tails: <span id="verified_tails"></span></p>
-            <p>Tails: <span id="tails"></span></p>
-
-            <div class="accordion" id="shareAccordian">
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            My Shares
-                        </button>
-                    </h2>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#shareAccordian">
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush" id="my_share_hashes">
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-        </div>
-</div>
-
+      </div>
     </div>
+
+  </div>
 
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
