@@ -143,16 +143,16 @@
             .data(arr)
             .enter()
           tr.append("li")
-            .attr("class", "list-group-item d-flex justify-content-between align-items-center")
-            .append("a")
+            .attr("class", "list-group-item d-flex justify-content-between align-items-center");
+          tr.append("a")
             .html(function (addr) {
               return addr.substr(0,8) + " &hellip; " + addr.substr(addr.length - 8, addr.length);
             })
             .attr("target", "_blank")
             .attr("href", function (addr) {
               return SiteSettings.addressUrl + addr;
-            })
-            .append("span")
+            });
+          tr.append("span")
             .attr("class", "badge badge-primary badge-pill")
             .text(pays[addr]);
         });
@@ -441,37 +441,38 @@
             <span class="badge badge-primary badge-pill">14</span>
           </li>
         </ul>
-      </div>
-      <br>
+        <br>
 
-        <h3 class="text-danger">Share explorer</h2>
-        <p>Best share: <span id="best_share"></span></p>
-        <p>Verified heads: <span id="verified_heads"></span></p>
-        <p>Heads: <span id="heads"></span></p>
-        <p>Verified tails: <span id="verified_tails"></span></p>
-        <p>Tails: <span id="tails"></span></p>
+        <h3 class="text-danger">Share explorer</h3>
+        <div id="shares-container">
+          <p>Best share: <span id="best_share"></span></p>
+          <p>Verified heads: <span id="verified_heads"></span></p>
+          <p>Heads: <span id="heads"></span></p>
+          <p>Verified tails: <span id="verified_tails"></span></p>
+          <p>Tails: <span id="tails"></span></p>
 
-        <div class="accordion" id="shareAccordian">
-            <div class="card">
-                <div class="card-header" id="headingTwo">
-                <h2 class="mb-0">
-                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        My Shares
-                    </button>
-                </h2>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#shareAccordian">
-                    <div class="card-body">
-                        <ul class="list-group list-group-flush" id="my_share_hashes">
-                        </ul>
-                    </div>
+          <div class="accordion" id="shareAccordian">
+              <div class="card">
+                  <div class="card-header" id="headingTwo">
+                  <h2 class="mb-0">
+                      <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          My Shares
+                      </button>
+                  </h2>
+                  </div>
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#shareAccordian">
+                      <div class="card-body">
+                          <ul class="list-group list-group-flush" id="my_share_hashes">
+                          </ul>
+                      </div>
+                  </div>
                 </div>
             </div>
+            <br>
+          </div>
         </div>
-        <br>
       </div>
     </div>
-
   </div>
 
     <script

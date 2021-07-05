@@ -5,3 +5,8 @@
 #site-sidebar > ul > li > a > i {
   padding-right: 4px;
 }
+
+#shares-container, #payout-container {
+  display: block;
+  max-height: 400px;
+}
