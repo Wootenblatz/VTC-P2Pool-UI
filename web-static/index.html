@@ -166,10 +166,10 @@
             .data(blocks)
             .enter()
             .append("div").attr("class", "col mb-4")
-            .append("div").attr("class", "card bg-secondary")
+            .append("div").attr("class", "card bg-dark")
             .append("div").attr("class", "card-body");
           tr.append("h5")
-            .attr("class", "card-title text-warning")
+            .attr("class", "card-title text-succes")
             .append("a")
               .html(function (block) { 
 
@@ -180,7 +180,7 @@
               })
                 .attr("target", "_blank");
           tr.append("p")
-              .attr("class", "card-text")
+              .attr("class", "card-text text-muted")
               .html(function (block) {
                 var d = new Date(1000 * block.ts);
                 return d.toLocaleDateString(SiteSettings.locale) + " " + d.toLocaleTimeString(SiteSettings.locale) + " &mdash; ";
@@ -188,7 +188,7 @@
               .append("a")
                 .text("View share")
                 .attr("href", function(block) { return "share.html#" + block.share; })
-                .attr("class", "text-info")
+                .attr("class", "text-muted")
                 .attr("target", "_blank");
           tr.append("p")
               .attr("class", "card-text")
