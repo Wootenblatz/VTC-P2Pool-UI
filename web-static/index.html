@@ -152,7 +152,7 @@
             .attr("target", "_blank")
             .attr("href", function (addr) {
               return SiteSettings.addressUrl + addr;
-            }).insertAfter("span").attr("class", "badge badge-primary badge-pill").text(pays[addr]);
+            }).append("span").attr("class", "badge badge-primary badge-pill").text(pays[addr]);
         });
 
         d3.json("../recent_blocks", function (blocks) {
