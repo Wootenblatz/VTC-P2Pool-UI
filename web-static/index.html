@@ -160,6 +160,7 @@
         });
 
         d3.json("../recent_blocks", function (blocks) {
+          var blockCount = 0;
           var tr = d3
             .select("#blocks")
             .selectAll()
@@ -194,7 +195,8 @@
               .attr("class", "card-text")
               .append("a")
                 .text(function (block){ 
-                  return block.hash.substr(0, 8) + " ... " + block.hash.substr(block.hash.length - 10, block.hash.length);
+                  blockCount +=1;
+                  return blockCount + ". " + block.hash.substr(0, 8) + " ... " + block.hash.substr(block.hash.length - 10, block.hash.length);
                 })
                 .attr("href", function(block) { 
                   return SiteSettings.blockUrl + block.hash;
@@ -329,7 +331,7 @@
 
         </ul>
       </div>
-      <div class="col-md-8 col-xs-12 pt-4 border-success rounded" id="middle-column">
+      <div class="col-md-8 col-xs-12 pt-4 rounded" id="middle-column">
           <div class="card-deck">
               <div class="card text-white bg-success">
                   <div class="card-body">
