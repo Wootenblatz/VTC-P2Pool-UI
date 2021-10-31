@@ -177,7 +177,7 @@
                 return currency_info.symbol + " block #" + block.number + ' <i class="fa fa-external-link-square" aria-hidden="true"></i>';
               })
               .attr("href", function(block){
-                return SiteSettings.blockUrl + block.number;
+                return SiteSettings.blockUrl + block.hash;
               })
                 .attr("target", "_blank");
           tr.append("p")
