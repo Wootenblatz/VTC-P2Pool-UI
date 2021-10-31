@@ -1,9 +1,9 @@
 const SiteSettings = {
   locale: "en-US",
   siteName: "Wootenblatz's VTC P2Pool",
-  blockUrl: "https://vtc.tokenview.com/en/block/",
-  tranactionUrl: "https://vtc.tokenview.com/en/tx/",
-  addressUrl: "https://vtc.tokenview.com/en/address/"
+  blockUrl: "https://insight.vertcoin.org/block/",
+  tranactionUrl: "https://insight.vertcoin.org/tx/",
+  addressUrl: "https://insight.vertcoin.org/address/"
 }
 $(function() {
   $("title").text(SiteSettings.siteName);
